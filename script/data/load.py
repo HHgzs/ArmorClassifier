@@ -145,7 +145,7 @@ def save_dataset_split(data_dir, test_size=0.2, random_state=42):
 if __name__ == '__main__':
     # 测试数据集路径
     # data_dir = '/home/nvidia/Code/ArmorClassifier/datasets/color'
-    data_dir = './datasets/color'
+    data_dir = './datasets/TIT_armor'
     
     # 加载数据集
     save_dataset_split(data_dir)
