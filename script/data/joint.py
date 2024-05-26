@@ -35,35 +35,30 @@ def create_image(image_folder, save_path, output_size, num_rows, num_cols):
     
 
 if __name__ == '__main__':
-
-    # 指定输出图像的大小
-    output_size = (20, 28)
-    num_rows = 10
-    num_cols = 14
+    
+    output_size = (128, 96)
+    num_rows = 15
+    num_cols = 15
+    image_folder = '/media/nvidia/M2T/Datasets/robomaster/datasets/armor_dataset_v4/images'
+    save_path = './doc/yolo3.jpg'
+    create_image(image_folder, save_path, output_size, num_rows, num_cols)
     
     
     for i in range(0, 8):
         
-        # output_size = (50, 50)
-        # num_rows = 10
-        # num_cols = 10
-        # image_folder = './datasets/TIT_armor/' + str(i)
-        # save_path = './doc/color' + str(i) + '.jpg'
-        
-        
-        # output_size = (20, 28)
-        # num_rows = 15
-        # num_cols = 21
-        # image_folder = './datasets/binary_armor/train/' + str(i)
-        # save_path = './doc/binary' + str(i) + '.jpg'
-        
-        output_size = (128, 72)
-        num_rows = 9
-        num_cols = 16
-        image_folder = './datasets/binary_armor/train/' + str(i)
-        save_path = './doc/binary' + str(i) + '.jpg'
-        
-        
+        output_size = (50, 50)
+        num_rows = 10
+        num_cols = 10
+        image_folder = './datasets/TIT_armor/' + str(i)
+        save_path = './doc/color' + str(i) + '.jpg'
         create_image(image_folder, save_path, output_size, num_rows, num_cols)
         
+        output_size = (20, 28)
+        num_rows = 15
+        num_cols = 21
+        image_folder = './datasets/binary_armor/train/' + str(i)
+        save_path = './doc/binary' + str(i) + '.jpg'
+        create_image(image_folder, save_path, output_size, num_rows, num_cols)
+        
+
         
