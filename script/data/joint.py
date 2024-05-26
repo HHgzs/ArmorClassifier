@@ -40,7 +40,7 @@ if __name__ == '__main__':
     num_rows = 15
     num_cols = 15
     image_folder = '/media/nvidia/M2T/Datasets/robomaster/datasets/armor_dataset_v4/images'
-    save_path = './doc/yolo3.jpg'
+    save_path = './doc/yolo/yolo.jpg'
     create_image(image_folder, save_path, output_size, num_rows, num_cols)
     
     
@@ -50,14 +50,14 @@ if __name__ == '__main__':
         num_rows = 10
         num_cols = 10
         image_folder = './datasets/TIT_armor/' + str(i)
-        save_path = './doc/color' + str(i) + '.jpg'
+        save_path = './doc/color/color' + str(i) + '.jpg'
         create_image(image_folder, save_path, output_size, num_rows, num_cols)
         
         output_size = (20, 28)
         num_rows = 15
         num_cols = 21
         image_folder = './datasets/binary_armor/train/' + str(i)
-        save_path = './doc/binary' + str(i) + '.jpg'
+        save_path = './doc/binary/binary' + str(i) + '.jpg'
         create_image(image_folder, save_path, output_size, num_rows, num_cols)
         
 

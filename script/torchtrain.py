@@ -77,6 +77,8 @@ def save_model(model, save_path, epoch, best_acc):
     torch.save(model.state_dict(), model_path)
     print(f'Model saved to {model_path}')
 
+
+
 def main():
     lr = 0.001
     num_epochs = 10
@@ -124,7 +126,7 @@ def main():
         if accuracy > best_acc:
             best_acc = accuracy
             save_model(model, save_path, epoch, best_acc)
-            
+         
     wandb.finish()
 
 if __name__ == '__main__':
