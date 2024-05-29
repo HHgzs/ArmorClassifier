@@ -3,3 +3,4 @@ datasets/
 build/
 wandb/
 models/
+outputs/
