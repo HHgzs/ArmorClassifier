@@ -4,9 +4,8 @@ import torch.nn as nn
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader
 from data.dataset import ArmorDataset
-from models.resnet import resnet18
+from networks.resnet import resnet18
 
-# 假设你已经定义了 BasicBlock, ResNet, resnet18, resnet34, 和 ArmorDataset
 
 # 数据转换
 transform = transforms.Compose([
