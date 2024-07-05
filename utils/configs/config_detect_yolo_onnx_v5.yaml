@@ -1,0 +1,22 @@
+
+
+mode: video              # [image, video, image-dir, video-dir]
+
+input_path: /mnt/d/Project/ArmorClassifier/datasets/RMUC2024/InfantrySmallHead/2024-5-17/17123251.avi
+label_path: /mnt/d/Project/ArmorClassifier/datasets/TJU_yolo/labels
+output_path: /mnt/d/Project/ArmorClassifier/out_v5.avi
+
+output:
+  class_num: 8
+  class_map: [0, 1, 2, 3, 4, 5, 6, 7, 7]
+  class_names: ["S", "1", "2", "3", "4", "5", "O", "B"]
+  format: v5                  # [v5, fp]
+
+model:
+  onnx: /mnt/d/Project/ArmorClassifier/outputs/v5n_7c_blk_640_480_v2.onnx
+  mode: v5                     # [v5, fp, fpx]
+  class_num: 7
+  infer_height: 480
+  infer_width: 640
+  conf_thres: 0.3
+  iou_thres: 0.02
