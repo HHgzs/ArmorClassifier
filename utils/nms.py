@@ -2,7 +2,6 @@ import numpy as np
 import onnxruntime as ort
 import cv2
 
-# 设定静态变量
 output_buffer_ = None
 bboxes_num_ = 0
 classes_num_ = 0
@@ -292,8 +291,6 @@ def detect(input_image, session, class_num, conf_thresh, iou_thresh, infer_width
     
     results = nms(output, class_num, conf_thresh, iou_thresh, input_w_, input_h_, infer_w_, infer_h_, mode)
     return results
-
-
 
 if __name__ == "__main__":
     model_path = "/mnt/d/Project/ArmorClassifier/outputs/4p_4c9c_640_640_RP24.onnx"

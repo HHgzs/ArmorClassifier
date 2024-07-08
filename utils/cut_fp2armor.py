@@ -6,9 +6,9 @@ from tqdm import tqdm
 
 # 将目标检测装甲板数据集转换为纯分类数据集
 
-path = "/mnt/d/Project/ArmorClassifier/datasets/TJU_yolo/labels"
-save_path = "/mnt/d/Project/ArmorClassifier/datasets/TJU_armor"
-class_map = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+path = "/mnt/d/Project/ArmorClassifier/datasets/TIT_yolo/labels"
+save_path = "/mnt/d/Project/ArmorClassifier/datasets/TIT_armor"
+class_map = [0, 1, 2, 3, 4, 5, 6, 7, 7, 0, 1, 2, 3, 4, 5, 6, 7, 7, 0, 1, 2, 3, 4, 5, 6, 7, 7, 0, 1, 2, 3, 4, 5, 6, 7, 7]
 
 # image size
 imgsz_width = 256
@@ -42,17 +42,16 @@ for root, dirs, files in os.walk(path):
                     img = cv2.imread(img_path)
                     
                     # 读取坐标
-                    x, y, w, h = line[1:]
+                    x1, y1, x2, y2, x3, y3, x4, y4 = line[1:]
                     
-                    # 获取图像的宽和高
-                    img_height, img_width = img.shape[:2]
+                    # 将归一化的坐标转换为真实坐标
+                    x1, y1, x2, y2, x3, y3, x4, y4 = x1 * img.shape[1], y1 * img.shape[0], x2 * img.shape[1], y2 * img.shape[0], x3 * img.shape[1], y3 * img.shape[0], x4 * img.shape[1], y4 * img.shape[0]
                     
-                    # 计算真实坐标
-                    x_min = max(0, x - w / 2) * img_width
-                    x_max = min(1, x + w / 2) * img_width
-                    y_min = max(0, y - h / 2) * img_height
-                    y_max = min(1, y + h / 2) * img_height
-
+                    # 求出外接矩形
+                    x_min = min(x1, x2, x3, x4)
+                    x_max = max(x1, x2, x3, x4)
+                    y_min = min(y1, y2, y3, y4)
+                    y_max = max(y1, y2, y3, y4)
                     
                     # y方向扩大 1/3，x方向扩大 1/3 倍
                     x_min = max(0, x_min - (x_max - x_min) / 6)
@@ -83,6 +82,8 @@ for root, dirs, files in os.walk(path):
                     box = img[int(top):int(bottom), int(left):int(right)]
                     box = cv2.resize(box, (imgsz_width, imgsz_height))
                     cv2.imwrite(img_save_path, box)
+                    
+                    
  
       
 print("all done!")

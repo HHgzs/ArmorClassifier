@@ -99,7 +99,10 @@ if __name__ == '__main__':
     with open(opts.config, 'r') as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
 
-    session = onnxruntime.InferenceSession(config["model"]["onnx"])
+    if config["gpu"]:
+        session = onnxruntime.InferenceSession(config["model"]["onnx"], providers=['CUDAExecutionProvider'])
+    else:
+        session = onnxruntime.InferenceSession(config["model"]["onnx"])
     
     if config["mode"] == "image":
         image_path = config["input_path"]

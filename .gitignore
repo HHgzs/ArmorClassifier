@@ -4,3 +4,4 @@ build/
 wandb/
 models/
 outputs/
+datasets
